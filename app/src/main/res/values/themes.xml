@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.FE3HReference" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
