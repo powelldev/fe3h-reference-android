@@ -1,0 +1,13 @@
+appId: com.mrp.fe3hreference
+---
+# Verifies the Phase 1 deliverable:
+# App launches -> Character List placeholder -> Character Detail placeholder -> Item Search placeholder
+- launchApp
+- assertVisible: "Character List"
+- tapOn: "View Character Detail"
+- assertVisible: "Character Detail"
+- back
+- assertVisible: "Character List"
+- tapOn: "⋮"
+- tapOn: "Item Search"
+- assertVisible: "Item Search"
