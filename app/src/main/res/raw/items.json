@@ -1,0 +1,636 @@
+{
+  "items": [
+    {
+      "id": "a_treatise_on_etiquette",
+      "name": "A Treatise on Etiquette"
+    },
+    {
+      "id": "agricultural_survey",
+      "name": "Agricultural Survey"
+    },
+    {
+      "id": "ancient_coin",
+      "name": "Ancient Coin"
+    },
+    {
+      "id": "anemone",
+      "name": "Anemone"
+    },
+    {
+      "id": "animal_bone_dice",
+      "name": "Animal Bone Dice"
+    },
+    {
+      "id": "animated_bait",
+      "name": "Animated Bait"
+    },
+    {
+      "id": "annotated_dictionary",
+      "name": "Annotated Dictionary"
+    },
+    {
+      "id": "antique_clasp",
+      "name": "Antique Clasp"
+    },
+    {
+      "id": "arithmetic_textbook",
+      "name": "Arithmetic Textbook"
+    },
+    {
+      "id": "armor_clasp",
+      "name": "Armor Clasp"
+    },
+    {
+      "id": "armored_bear_stuffy",
+      "name": "Armored Bear Stuffy"
+    },
+    {
+      "id": "art_book",
+      "name": "Art Book"
+    },
+    {
+      "id": "artificial_flower",
+      "name": "Artificial Flower"
+    },
+    {
+      "id": "baby_s_breath",
+      "name": "Baby’s Breath"
+    },
+    {
+      "id": "badge_of_graduation",
+      "name": "Badge of Graduation"
+    },
+    {
+      "id": "bag_of_seeds",
+      "name": "Bag of Seeds"
+    },
+    {
+      "id": "bag_of_tea_leaves",
+      "name": "Bag of Tea Leaves"
+    },
+    {
+      "id": "balance_scale",
+      "name": "Balance Scale"
+    },
+    {
+      "id": "basket_of_berries",
+      "name": "Basket of Berries"
+    },
+    {
+      "id": "big_spoon",
+      "name": "Big Spoon"
+    },
+    {
+      "id": "black_hair_tie",
+      "name": "Black Hair Tie"
+    },
+    {
+      "id": "black_iron_spur",
+      "name": "Black Iron Spur"
+    },
+    {
+      "id": "black_leather_gloves",
+      "name": "Black Leather Gloves"
+    },
+    {
+      "id": "blue_cheese",
+      "name": "Blue Cheese"
+    },
+    {
+      "id": "blue_stone",
+      "name": "Blue Stone"
+    },
+    {
+      "id": "board_game",
+      "name": "Board Game"
+    },
+    {
+      "id": "board_game_piece",
+      "name": "Board Game Piece"
+    },
+    {
+      "id": "book_of_crest_designs",
+      "name": "Book of Crest Designs"
+    },
+    {
+      "id": "book_of_ghost_stories",
+      "name": "Book of Ghost Stories"
+    },
+    {
+      "id": "book_of_sheet_music",
+      "name": "Book of Sheet Music"
+    },
+    {
+      "id": "bundle_of_dry_hemp",
+      "name": "Bundle of Dry Hemp"
+    },
+    {
+      "id": "bundle_of_herbs",
+      "name": "Bundle of Herbs"
+    },
+    {
+      "id": "burlap_sack_of_rocks",
+      "name": "Burlap Sack of Rocks"
+    },
+    {
+      "id": "carnation",
+      "name": "Carnation"
+    },
+    {
+      "id": "carving_hammer",
+      "name": "Carving Hammer"
+    },
+    {
+      "id": "centipede_picture",
+      "name": "Centipede Picture"
+    },
+    {
+      "id": "ceremonial_sword",
+      "name": "Ceremonial Sword"
+    },
+    {
+      "id": "clean_dusting_cloth",
+      "name": "Clean Dusting Cloth"
+    },
+    {
+      "id": "coffee_beans",
+      "name": "Coffee Beans"
+    },
+    {
+      "id": "confessional_letter",
+      "name": "Confessional Letter"
+    },
+    {
+      "id": "crude_arrowheads",
+      "name": "Crude Arrowheads"
+    },
+    {
+      "id": "crumpled_love_letter",
+      "name": "Crumpled Love Letter"
+    },
+    {
+      "id": "curry_comb",
+      "name": "Curry Comb"
+    },
+    {
+      "id": "dapper_handkerchief",
+      "name": "Dapper Handkerchief"
+    },
+    {
+      "id": "dulled_longsword",
+      "name": "Dulled Longsword"
+    },
+    {
+      "id": "dusty_book_of_fables",
+      "name": "Dusty Book of Fables"
+    },
+    {
+      "id": "eastern_porcelain",
+      "name": "Eastern Porcelain"
+    },
+    {
+      "id": "elegant_hair_clip",
+      "name": "Elegant Hair Clip"
+    },
+    {
+      "id": "encyclopedia_of_sweets",
+      "name": "Encyclopedia of Sweets"
+    },
+    {
+      "id": "evil_repelling_amulet",
+      "name": "Evil-Repelling Amulet"
+    },
+    {
+      "id": "exotic_feather",
+      "name": "Exotic Feather"
+    },
+    {
+      "id": "exotic_spices",
+      "name": "Exotic Spices"
+    },
+    {
+      "id": "faded_star_chart",
+      "name": "Faded Star Chart"
+    },
+    {
+      "id": "feather_pillow",
+      "name": "Feather Pillow"
+    },
+    {
+      "id": "fishing_float",
+      "name": "Fishing Float"
+    },
+    {
+      "id": "floral_adornment",
+      "name": "Floral Adornment"
+    },
+    {
+      "id": "folding_razor",
+      "name": "Folding Razor"
+    },
+    {
+      "id": "foreign_gold_coin",
+      "name": "Foreign Gold Coin"
+    },
+    {
+      "id": "forget_me_nots",
+      "name": "Forget-me-nots"
+    },
+    {
+      "id": "fruit_preserves",
+      "name": "Fruit Preserves"
+    },
+    {
+      "id": "fur_scarf",
+      "name": "Fur Scarf"
+    },
+    {
+      "id": "gardening_sheers",
+      "name": "Gardening Sheers"
+    },
+    {
+      "id": "gemstone_beads",
+      "name": "Gemstone Beads"
+    },
+    {
+      "id": "goddess_statuette",
+      "name": "Goddess Statuette"
+    },
+    {
+      "id": "gold_earring",
+      "name": "Gold Earring"
+    },
+    {
+      "id": "grounding_charm",
+      "name": "Grounding Charm"
+    },
+    {
+      "id": "hammer_and_chisel",
+      "name": "Hammer and Chisel"
+    },
+    {
+      "id": "hand_drawn_map",
+      "name": "Hand Drawn Map"
+    },
+    {
+      "id": "handmade_hair_clip",
+      "name": "Handmade Hair Clip"
+    },
+    {
+      "id": "hedgehog_case",
+      "name": "Hedgehog Case"
+    },
+    {
+      "id": "how_to_bake_sweets",
+      "name": "How to Bake Sweets"
+    },
+    {
+      "id": "how_to_be_tidy",
+      "name": "How to be Tidy"
+    },
+    {
+      "id": "hresvelg_treatise",
+      "name": "Hresvelg Treatise"
+    },
+    {
+      "id": "hunting_dagger",
+      "name": "Hunting Dagger"
+    },
+    {
+      "id": "introduction_to_magic",
+      "name": "Introduction to Magic"
+    },
+    {
+      "id": "iron_cooking_pot",
+      "name": "Iron Cooking Pot"
+    },
+    {
+      "id": "jar_of_sweets",
+      "name": "Jar of Sweets"
+    },
+    {
+      "id": "jousting_almanac",
+      "name": "Jousting Almanac"
+    },
+    {
+      "id": "landscape_painting",
+      "name": "Landscape Painting"
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender"
+    },
+    {
+      "id": "leather_bow_sheath",
+      "name": "Leather Bow Sheath"
+    },
+    {
+      "id": "legend_of_chivalry",
+      "name": "Legend of Chivalry"
+    },
+    {
+      "id": "legends_of_chivalry",
+      "name": "Legends of Chivalry"
+    },
+    {
+      "id": "lens_cloth",
+      "name": "Lens Cloth"
+    },
+    {
+      "id": "letter_to_rhea",
+      "name": "Letter to Rhea"
+    },
+    {
+      "id": "letter_to_the_goddess",
+      "name": "Letter to the Goddess"
+    },
+    {
+      "id": "light_purple_veil",
+      "name": "Light Purple Veil"
+    },
+    {
+      "id": "lily",
+      "name": "Lily"
+    },
+    {
+      "id": "lily_of_the_valley",
+      "name": "Lily of the Valley"
+    },
+    {
+      "id": "lovely_comb",
+      "name": "Lovely Comb"
+    },
+    {
+      "id": "maintenance_oil",
+      "name": "Maintenance Oil"
+    },
+    {
+      "id": "makeup_brush",
+      "name": "Makeup Brush"
+    },
+    {
+      "id": "mild_stomach_poison",
+      "name": "Mild Stomach Poison"
+    },
+    {
+      "id": "monarch_studies_book",
+      "name": "Monarch Studies Book"
+    },
+    {
+      "id": "moon_knight_s_tale",
+      "name": "Moon Knight’s Tale"
+    },
+    {
+      "id": "mysterious_notebook",
+      "name": "Mysterious Notebook"
+    },
+    {
+      "id": "needle_and_thread",
+      "name": "Needle and Thread"
+    },
+    {
+      "id": "new_bottle_of_perfume",
+      "name": "New Bottle of Perfume"
+    },
+    {
+      "id": "nimbus_charm",
+      "name": "Nimbus Charm"
+    },
+    {
+      "id": "noseless_puppet",
+      "name": "Noseless Puppet"
+    },
+    {
+      "id": "noxious_handkerchief",
+      "name": "Noxious Handkerchief"
+    },
+    {
+      "id": "old_cleaning_cloth",
+      "name": "Old Cleaning Cloth"
+    },
+    {
+      "id": "old_fishing_rod",
+      "name": "Old Fishing Rod"
+    },
+    {
+      "id": "old_map_of_enbarr",
+      "name": "Old Map of Enbarr"
+    },
+    {
+      "id": "pegasus_horseshoes",
+      "name": "Pegasus Horseshoes"
+    },
+    {
+      "id": "pitcher_plant",
+      "name": "Pitcher Plant"
+    },
+    {
+      "id": "portrait_of_rhea",
+      "name": "Portrait of Rhea"
+    },
+    {
+      "id": "princess_doll",
+      "name": "Princess Doll"
+    },
+    {
+      "id": "rare_item_index",
+      "name": "Rare Item Index"
+    },
+    {
+      "id": "repellent_powder",
+      "name": "Repellent Powder"
+    },
+    {
+      "id": "riding_boots",
+      "name": "Riding Boots"
+    },
+    {
+      "id": "rose",
+      "name": "Rose"
+    },
+    {
+      "id": "school_of_sorcery_book",
+      "name": "School of Sorcery Book"
+    },
+    {
+      "id": "secret_ledger",
+      "name": "Secret Ledger"
+    },
+    {
+      "id": "seiros_scriptures",
+      "name": "Seiros Scriptures"
+    },
+    {
+      "id": "shiny_striated_pebble",
+      "name": "Shiny Striated Pebble"
+    },
+    {
+      "id": "silk_handkerchief",
+      "name": "Silk Handkerchief"
+    },
+    {
+      "id": "silver_brooch",
+      "name": "Silver Brooch"
+    },
+    {
+      "id": "silver_necklace",
+      "name": "Silver Necklace"
+    },
+    {
+      "id": "sketch_of_a_sigil",
+      "name": "Sketch of a Sigil"
+    },
+    {
+      "id": "small_tanned_hide",
+      "name": "Small Tanned Hide"
+    },
+    {
+      "id": "smoked_meat",
+      "name": "Smoked Meat"
+    },
+    {
+      "id": "snapped_writing_quill",
+      "name": "Snapped Writing Quill"
+    },
+    {
+      "id": "songstress_poster",
+      "name": "Songstress Poster"
+    },
+    {
+      "id": "spotless_bandage",
+      "name": "Spotless Bandage"
+    },
+    {
+      "id": "stiff_hand_wrap",
+      "name": "Stiff Hand Wrap"
+    },
+    {
+      "id": "still_life_picture",
+      "name": "Still-Life Picture"
+    },
+    {
+      "id": "stylish_hair_clip",
+      "name": "Stylish Hair Clip"
+    },
+    {
+      "id": "sunflower",
+      "name": "Sunflower"
+    },
+    {
+      "id": "suspicious_dice",
+      "name": "Suspicious Dice"
+    },
+    {
+      "id": "sword_belt_fragment",
+      "name": "Sword Belt Fragment"
+    },
+    {
+      "id": "tasty_bake_treat",
+      "name": "Tasty Bake Treat"
+    },
+    {
+      "id": "tasty_baked_treat",
+      "name": "Tasty Baked Treat"
+    },
+    {
+      "id": "tattered_overcoat",
+      "name": "Tattered Overcoat"
+    },
+    {
+      "id": "tea_leaves",
+      "name": "Tea Leaves"
+    },
+    {
+      "id": "the_history_of_fodlan",
+      "name": "The History of Fodlan"
+    },
+    {
+      "id": "the_history_of_sreng",
+      "name": "The History of Sreng"
+    },
+    {
+      "id": "the_saints_revealed",
+      "name": "The Saints Revealed"
+    },
+    {
+      "id": "thunderbrand_replica",
+      "name": "Thunderbrand Replica"
+    },
+    {
+      "id": "time_worn_quill_pen",
+      "name": "Time-worn Quill Pen"
+    },
+    {
+      "id": "toothed_dagger",
+      "name": "Toothed Dagger"
+    },
+    {
+      "id": "training_logbook",
+      "name": "Training Logbook"
+    },
+    {
+      "id": "training_weight",
+      "name": "Training Weight"
+    },
+    {
+      "id": "unfinished_fable",
+      "name": "Unfinished Fable"
+    },
+    {
+      "id": "unfinished_score",
+      "name": "Unfinished Score"
+    },
+    {
+      "id": "unused_lipstick",
+      "name": "Unused Lipstick"
+    },
+    {
+      "id": "used_bottle_of_perfume",
+      "name": "Used Bottle of Perfume"
+    },
+    {
+      "id": "violet",
+      "name": "Violet"
+    },
+    {
+      "id": "watering_can",
+      "name": "Watering Can"
+    },
+    {
+      "id": "wax_diptych",
+      "name": "Wax Diptych"
+    },
+    {
+      "id": "weathered_cloak",
+      "name": "Weathered Cloak"
+    },
+    {
+      "id": "well_used_hatchet",
+      "name": "Well-Used Hatchet"
+    },
+    {
+      "id": "well_worn_hammock",
+      "name": "Well-Worn Hammock"
+    },
+    {
+      "id": "wellness_herbs",
+      "name": "Wellness Herbs"
+    },
+    {
+      "id": "whetstone",
+      "name": "Whetstone"
+    },
+    {
+      "id": "white_glove",
+      "name": "White Glove"
+    },
+    {
+      "id": "wooden_button",
+      "name": "Wooden Button"
+    },
+    {
+      "id": "wooden_flask",
+      "name": "Wooden Flask"
+    }
+  ]
+}
