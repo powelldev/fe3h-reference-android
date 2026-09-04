@@ -1,12 +1,14 @@
 package com.mrp.fe3hreference.feature.characterdetail
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mrp.fe3hreference.data.model.CharacterId
 import com.mrp.fe3hreference.domain.repository.FE3HRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class CharacterDetailViewModel(
     characterId: CharacterId,
@@ -16,11 +18,11 @@ class CharacterDetailViewModel(
     val uiState: StateFlow<CharacterDetailUiState> = _uiState.asStateFlow()
 
     init {
-        loadCharacter(characterId)
+        viewModelScope.launch { loadCharacter(characterId) }
     }
 
     @Suppress("TooGenericExceptionCaught")
-    private fun loadCharacter(characterId: CharacterId) {
+    private suspend fun loadCharacter(characterId: CharacterId) {
         // Bundled FE3H data can fail in several distinct ways (malformed JSON,
         // unresolved cross-references, unknown enum values); all are treated
         // alike as a data-loading failure surfaced to the user.
