@@ -1,0 +1,44 @@
+appId: com.mrp.fe3hreference
+---
+# Verifies the Phase 5 deliverable: Character Detail has a Stats/Items/Teas tab
+# bar, and the Stats tab renders proficiency icons, crest tooltips, and the
+# base/growth/maximum stat tables from live FE3H data.
+- launchApp
+- assertVisible: "FE3H Reference"
+
+# Hubert: proficiency icons (budding talent / bane / boon) and stat tables.
+- tapOn: "Hubert"
+- assertVisible: "Stats"
+- assertVisible: "Items"
+- assertVisible: "Teas"
+- assertVisible: "LANCE"
+- assertVisible: "★★★"
+- assertVisible: "AXE"
+- assertVisible: "▼"
+- assertVisible: "BOW"
+- assertVisible: "▲"
+- assertVisible: "Base Stats"
+- assertVisible: "Growth Rates"
+- assertVisible: "Maximum Stats"
+
+# Items/Teas tabs are reachable (full content lands in later phases).
+- tapOn: "Items"
+- assertVisible: "Items — coming soon"
+- tapOn: "Teas"
+- assertVisible: "Teas — coming soon"
+- back
+
+# Edelgard: crest icons open a tooltip with the crest's name and effect.
+- tapOn: "Edelgard"
+- assertVisible: "Crests"
+- tapOn:
+    id: "crest_icon_flames"
+- assertVisible: "Flames"
+- assertVisible: "Occasionally restores HP"
+- tapOn: "OK"
+- tapOn:
+    id: "crest_icon_seiros"
+- assertVisible: "Seiros"
+- tapOn: "OK"
+- back
+- assertVisible: "FE3H Reference"

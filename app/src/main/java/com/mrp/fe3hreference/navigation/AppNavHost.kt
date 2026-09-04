@@ -27,7 +27,10 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
                 backStackEntry.arguments
                     ?.getString(Route.CharacterDetail.ARG_CHARACTER_ID)
                     .orEmpty()
-            CharacterDetailScreen(characterId = characterId)
+            CharacterDetailScreen(
+                characterId = characterId,
+                onBackClick = { navController.navigateUp() },
+            )
         }
         composable(Route.ItemSearch.route) {
             ItemSearchScreen()
