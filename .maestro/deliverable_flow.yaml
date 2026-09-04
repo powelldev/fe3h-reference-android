@@ -8,7 +8,7 @@ appId: com.mrp.fe3hreference
 - assertVisible: "FE3H Reference"
 - assertVisible: "Hubert"
 - tapOn: "Hubert"
-- assertVisible: "ID: hubert"
+- assertVisible: "Stats"
 - back
 - assertVisible: "Hubert"
 - tapOn: "⋮"
