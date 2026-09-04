@@ -11,11 +11,12 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
-val appModule = module {
-    single { FE3HJsonParser() }
-    single<FE3HRawDataSource> { AndroidFE3HRawDataSource(androidContext()) }
-    single<FE3HRepository> { FE3HRepositoryImpl(get(), get()) }
+val appModule =
+    module {
+        single { FE3HJsonParser() }
+        single<FE3HRawDataSource> { AndroidFE3HRawDataSource(androidContext()) }
+        single<FE3HRepository> { FE3HRepositoryImpl(get(), get()) }
 
-    viewModel { CharacterListViewModel(get()) }
-    viewModel { params -> CharacterDetailViewModel(params.get(), get()) }
-}
+        viewModel { CharacterListViewModel(get()) }
+        viewModel { params -> CharacterDetailViewModel(params.get(), get()) }
+    }

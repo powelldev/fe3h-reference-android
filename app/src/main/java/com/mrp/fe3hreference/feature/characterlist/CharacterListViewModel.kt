@@ -16,7 +16,11 @@ class CharacterListViewModel(
         loadCharacters()
     }
 
+    @Suppress("TooGenericExceptionCaught")
     private fun loadCharacters() {
+        // Bundled FE3H data can fail in several distinct ways (malformed JSON,
+        // unresolved cross-references, unknown enum values); all are treated
+        // alike as a data-loading failure surfaced to the user.
         _uiState.value =
             try {
                 CharacterListUiState.Success(repository.getCharacters())

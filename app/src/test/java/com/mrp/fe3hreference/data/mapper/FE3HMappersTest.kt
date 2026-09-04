@@ -3,7 +3,6 @@ package com.mrp.fe3hreference.data.mapper
 import com.mrp.fe3hreference.data.dto.CharacterDto
 import com.mrp.fe3hreference.data.dto.CharacterStatsDto
 import com.mrp.fe3hreference.data.dto.CrestDto
-import com.mrp.fe3hreference.data.dto.ItemDto
 import com.mrp.fe3hreference.data.dto.TeaDto
 import com.mrp.fe3hreference.data.dto.TeaTopicDto
 import com.mrp.fe3hreference.data.model.Item

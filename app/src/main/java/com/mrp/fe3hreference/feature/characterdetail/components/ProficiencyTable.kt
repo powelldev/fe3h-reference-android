@@ -58,8 +58,13 @@ internal fun proficiencySymbol(status: ProficiencyStatus): String =
         ProficiencyStatus.BuddingTalent -> "★★★"
     }
 
+@Suppress("MagicNumber")
 private val BoonColor = Color(0xFF1565C0)
+
+@Suppress("MagicNumber")
 private val BaneColor = Color(0xFFC62828)
+
+@Suppress("MagicNumber")
 private val BuddingTalentColor = Color(0xFFF9A825)
 
 internal fun proficiencyColor(status: ProficiencyStatus): Color =

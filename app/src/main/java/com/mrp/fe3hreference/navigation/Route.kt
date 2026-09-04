@@ -1,6 +1,8 @@
 package com.mrp.fe3hreference.navigation
 
-sealed class Route(val route: String) {
+sealed class Route(
+    val route: String,
+) {
     data object Characters : Route("characters")
 
     data object ItemSearch : Route("items/search")

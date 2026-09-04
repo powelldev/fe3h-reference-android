@@ -1,5 +1,6 @@
 package com.mrp.fe3hreference.feature.characterlist
 
+import com.mrp.fe3hreference.data.model.Character
 import com.mrp.fe3hreference.data.model.CharacterId
 import com.mrp.fe3hreference.data.repository.FE3HRepositoryImpl
 import com.mrp.fe3hreference.data.source.FE3HJsonParser
@@ -35,7 +36,7 @@ class CharacterListViewModelTest {
     fun `repository failure surfaces as Error state`() {
         val failingRepository =
             object : FE3HRepository by repository {
-                override fun getCharacters() = throw IllegalStateException("data unavailable")
+                override fun getCharacters(): List<Character> = error("data unavailable")
             }
 
         val viewModel = CharacterListViewModel(failingRepository)

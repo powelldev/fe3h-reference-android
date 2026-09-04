@@ -40,8 +40,7 @@ fun CharacterStatsDto.toDomain(): CharacterStats =
         maximum = maximum.toStatMap(),
     )
 
-private fun Map<String, Int>.toStatMap(): Map<StatType, Int> =
-    entries.associate { (key, value) -> StatType.valueOf(key) to value }
+private fun Map<String, Int>.toStatMap(): Map<StatType, Int> = mapKeys { (key, _) -> StatType.valueOf(key) }
 
 fun parseProficiencyStatus(raw: String): ProficiencyStatus =
     when (raw) {
@@ -52,23 +51,24 @@ fun parseProficiencyStatus(raw: String): ProficiencyStatus =
         else -> error("Unknown proficiency status: $raw")
     }
 
+private fun CharacterDto.refError(
+    kind: String,
+    refId: String,
+): Nothing = error("Character '$id' references unknown $kind id '$refId'")
+
 fun CharacterDto.toDomain(
     itemsById: Map<ItemId, Item>,
     crestsById: Map<CrestId, Crest>,
     teasById: Map<TeaId, Tea>,
     teaTopicsById: Map<TeaTopicId, TeaTopic>,
 ): Character {
-    fun resolveItem(itemId: String): Item =
-        itemsById[ItemId(itemId)] ?: error("Character '$id' references unknown item id '$itemId'")
+    fun resolveItem(itemId: String): Item = itemsById[ItemId(itemId)] ?: refError("item", itemId)
 
-    fun resolveCrest(crestId: String): Crest =
-        crestsById[CrestId(crestId)] ?: error("Character '$id' references unknown crest id '$crestId'")
+    fun resolveCrest(crestId: String): Crest = crestsById[CrestId(crestId)] ?: refError("crest", crestId)
 
-    fun resolveTea(teaId: String): Tea =
-        teasById[TeaId(teaId)] ?: error("Character '$id' references unknown tea id '$teaId'")
+    fun resolveTea(teaId: String): Tea = teasById[TeaId(teaId)] ?: refError("tea", teaId)
 
-    fun resolveTeaTopic(topicId: String): TeaTopic =
-        teaTopicsById[TeaTopicId(topicId)] ?: error("Character '$id' references unknown tea topic id '$topicId'")
+    fun resolveTeaTopic(topicId: String): TeaTopic = teaTopicsById[TeaTopicId(topicId)] ?: refError("topic", topicId)
 
     return Character(
         id = CharacterId(id),

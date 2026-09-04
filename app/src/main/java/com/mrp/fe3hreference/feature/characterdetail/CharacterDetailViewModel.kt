@@ -19,7 +19,11 @@ class CharacterDetailViewModel(
         loadCharacter(characterId)
     }
 
+    @Suppress("TooGenericExceptionCaught")
     private fun loadCharacter(characterId: CharacterId) {
+        // Bundled FE3H data can fail in several distinct ways (malformed JSON,
+        // unresolved cross-references, unknown enum values); all are treated
+        // alike as a data-loading failure surfaced to the user.
         _uiState.value =
             try {
                 val character = repository.getCharacter(characterId)

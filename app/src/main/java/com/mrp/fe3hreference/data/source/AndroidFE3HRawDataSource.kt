@@ -17,5 +17,9 @@ class AndroidFE3HRawDataSource(
 
     private fun readRaw(
         @RawRes resId: Int,
-    ): String = context.resources.openRawResource(resId).bufferedReader().use { it.readText() }
+    ): String =
+        context.resources
+            .openRawResource(resId)
+            .bufferedReader()
+            .use { it.readText() }
 }

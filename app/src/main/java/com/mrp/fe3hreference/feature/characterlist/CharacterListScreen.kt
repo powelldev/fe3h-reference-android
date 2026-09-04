@@ -35,66 +35,84 @@ fun CharacterListScreen(
     onItemSearchClick: () -> Unit,
     viewModel: CharacterListViewModel = koinViewModel(),
 ) {
-    var menuExpanded by remember { mutableStateOf(false) }
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("FE3H Reference") },
-                actions = {
-                    IconButton(onClick = { menuExpanded = true }) {
-                        Text("⋮")
-                    }
-                    DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
-                        DropdownMenuItem(
-                            text = { Text("Item Search") },
-                            onClick = {
-                                menuExpanded = false
-                                onItemSearchClick()
-                            },
-                        )
-                    }
-                },
-            )
-        },
+        topBar = { CharacterListTopBar(onItemSearchClick = onItemSearchClick) },
     ) { padding ->
-        when (val currentState = state) {
-            is CharacterListUiState.Loading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    CircularProgressIndicator()
+        CharacterListContent(
+            state = state,
+            padding = padding,
+            onCharacterClick = onCharacterClick,
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CharacterListTopBar(onItemSearchClick: () -> Unit) {
+    var menuExpanded by remember { mutableStateOf(false) }
+
+    TopAppBar(
+        title = { Text("FE3H Reference") },
+        actions = {
+            IconButton(onClick = { menuExpanded = true }) {
+                Text("⋮")
+            }
+            DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
+                DropdownMenuItem(
+                    text = { Text("Item Search") },
+                    onClick = {
+                        menuExpanded = false
+                        onItemSearchClick()
+                    },
+                )
+            }
+        },
+    )
+}
+
+@Composable
+private fun CharacterListContent(
+    state: CharacterListUiState,
+    padding: PaddingValues,
+    onCharacterClick: (String) -> Unit,
+) {
+    when (state) {
+        is CharacterListUiState.Loading -> {
+            Box(
+                modifier = Modifier.fillMaxSize().padding(padding),
+                contentAlignment = Alignment.Center,
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+
+        is CharacterListUiState.Success -> {
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(minSize = 96.dp),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .testTag("character_grid"),
+                contentPadding = PaddingValues(16.dp),
+            ) {
+                items(state.characters, key = { it.id.value }) { character ->
+                    CharacterGridItem(
+                        character = character,
+                        onClick = { onCharacterClick(character.id.value) },
+                    )
                 }
             }
+        }
 
-            is CharacterListUiState.Success -> {
-                LazyVerticalGrid(
-                    columns = GridCells.Adaptive(minSize = 96.dp),
-                    modifier =
-                        Modifier
-                            .fillMaxSize()
-                            .padding(padding)
-                            .testTag("character_grid"),
-                    contentPadding = PaddingValues(16.dp),
-                ) {
-                    items(currentState.characters, key = { it.id.value }) { character ->
-                        CharacterGridItem(
-                            character = character,
-                            onClick = { onCharacterClick(character.id.value) },
-                        )
-                    }
-                }
-            }
-
-            is CharacterListUiState.Error -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(text = currentState.message)
-                }
+        is CharacterListUiState.Error -> {
+            Box(
+                modifier = Modifier.fillMaxSize().padding(padding),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(text = state.message)
             }
         }
     }
