@@ -7,51 +7,63 @@ import com.mrp.fe3hreference.data.repository.FE3HRepositoryImpl
 import com.mrp.fe3hreference.data.source.FE3HJsonParser
 import com.mrp.fe3hreference.data.source.TestFE3HRawDataSource
 import com.mrp.fe3hreference.domain.repository.FE3HRepository
+import com.mrp.fe3hreference.testutil.MainDispatcherRule
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Rule
 import org.junit.Test
 
 class CharacterDetailViewModelTest {
-    private val repository: FE3HRepository = FE3HRepositoryImpl(TestFE3HRawDataSource(), FE3HJsonParser())
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
+
+    private val repository: FE3HRepository =
+        FE3HRepositoryImpl(TestFE3HRawDataSource(), FE3HJsonParser(), ioDispatcher = Dispatchers.Unconfined)
 
     @Test
-    fun `loads Hubert into Success state with Stats tab selected by default`() {
-        val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
+    fun `loads Hubert into Success state with Stats tab selected by default`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
 
-        val state = viewModel.uiState.value
+            val state = viewModel.uiState.value
 
-        assertTrue(state is CharacterDetailUiState.Success)
-        val success = state as CharacterDetailUiState.Success
-        assertEquals("Hubert", success.character.name)
-        assertEquals(CharacterDetailTab.STATS, success.selectedTab)
-    }
-
-    @Test
-    fun `Hubert's Stats tab data matches his proficiencies`() {
-        val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
-
-        val success = viewModel.uiState.value as CharacterDetailUiState.Success
-
-        assertEquals(ProficiencyStatus.BuddingTalent, success.character.proficiencies[ProficiencyType.LANCE])
-        assertEquals(ProficiencyStatus.Bane, success.character.proficiencies[ProficiencyType.AXE])
-    }
+            assertTrue(state is CharacterDetailUiState.Success)
+            val success = state as CharacterDetailUiState.Success
+            assertEquals("Hubert", success.character.name)
+            assertEquals(CharacterDetailTab.STATS, success.selectedTab)
+        }
 
     @Test
-    fun `onTabSelected switches the selected tab`() {
-        val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
+    fun `Hubert's Stats tab data matches his proficiencies`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
 
-        viewModel.onTabSelected(CharacterDetailTab.TEAS)
+            val success = viewModel.uiState.value as CharacterDetailUiState.Success
 
-        val success = viewModel.uiState.value as CharacterDetailUiState.Success
-        assertEquals(CharacterDetailTab.TEAS, success.selectedTab)
-    }
+            assertEquals(ProficiencyStatus.BuddingTalent, success.character.proficiencies[ProficiencyType.LANCE])
+            assertEquals(ProficiencyStatus.Bane, success.character.proficiencies[ProficiencyType.AXE])
+        }
 
     @Test
-    fun `unknown character id surfaces as Error state`() {
-        val viewModel = CharacterDetailViewModel(CharacterId("not_a_real_character"), repository)
+    fun `onTabSelected switches the selected tab`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
 
-        val state = viewModel.uiState.value
+            viewModel.onTabSelected(CharacterDetailTab.TEAS)
 
-        assertTrue(state is CharacterDetailUiState.Error)
-    }
+            val success = viewModel.uiState.value as CharacterDetailUiState.Success
+            assertEquals(CharacterDetailTab.TEAS, success.selectedTab)
+        }
+
+    @Test
+    fun `unknown character id surfaces as Error state`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("not_a_real_character"), repository)
+
+            val state = viewModel.uiState.value
+
+            assertTrue(state is CharacterDetailUiState.Error)
+        }
 }

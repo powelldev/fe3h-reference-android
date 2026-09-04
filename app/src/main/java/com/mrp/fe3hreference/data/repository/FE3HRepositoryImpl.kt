@@ -15,10 +15,14 @@ import com.mrp.fe3hreference.data.model.TeaTopicId
 import com.mrp.fe3hreference.data.source.FE3HJsonParser
 import com.mrp.fe3hreference.data.source.FE3HRawDataSource
 import com.mrp.fe3hreference.domain.repository.FE3HRepository
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class FE3HRepositoryImpl(
     private val rawDataSource: FE3HRawDataSource,
     private val parser: FE3HJsonParser = FE3HJsonParser(),
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : FE3HRepository {
     private val allItems: List<Item> by lazy {
         parser.parseItems(rawDataSource.itemsJson()).map { it.toDomain() }
@@ -50,13 +54,13 @@ class FE3HRepositoryImpl(
 
     private val charactersById: Map<CharacterId, Character> by lazy { allCharacters.associateBy { it.id } }
 
-    override fun getCharacters(): List<Character> = allCharacters
+    override suspend fun getCharacters(): List<Character> = withContext(ioDispatcher) { allCharacters }
 
-    override fun getCharacter(id: CharacterId): Character? = charactersById[id]
+    override suspend fun getCharacter(id: CharacterId): Character? = withContext(ioDispatcher) { charactersById[id] }
 
-    override fun getItems(): List<Item> = allItems
+    override suspend fun getItems(): List<Item> = withContext(ioDispatcher) { allItems }
 
-    override fun getCrests(): List<Crest> = allCrests
+    override suspend fun getCrests(): List<Crest> = withContext(ioDispatcher) { allCrests }
 
-    override fun getTeas(): List<Tea> = allTeas
+    override suspend fun getTeas(): List<Tea> = withContext(ioDispatcher) { allTeas }
 }

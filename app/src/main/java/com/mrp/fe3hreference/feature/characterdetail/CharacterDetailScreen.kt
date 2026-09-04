@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mrp.fe3hreference.data.model.CharacterId
+import com.mrp.fe3hreference.feature.characterdetail.components.ItemsTab
 import com.mrp.fe3hreference.feature.characterdetail.components.StatsTab
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -73,7 +74,7 @@ fun CharacterDetailScreen(
 
                     when (currentState.selectedTab) {
                         CharacterDetailTab.STATS -> StatsTab(character = currentState.character)
-                        CharacterDetailTab.ITEMS -> PlaceholderTabContent(text = "Items — coming soon")
+                        CharacterDetailTab.ITEMS -> ItemsTab(character = currentState.character)
                         CharacterDetailTab.TEAS -> PlaceholderTabContent(text = "Teas — coming soon")
                     }
                 }
