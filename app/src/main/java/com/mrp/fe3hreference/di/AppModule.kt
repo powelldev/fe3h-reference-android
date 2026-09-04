@@ -7,6 +7,7 @@ import com.mrp.fe3hreference.data.source.FE3HRawDataSource
 import com.mrp.fe3hreference.domain.repository.FE3HRepository
 import com.mrp.fe3hreference.feature.characterdetail.CharacterDetailViewModel
 import com.mrp.fe3hreference.feature.characterlist.CharacterListViewModel
+import com.mrp.fe3hreference.feature.itemsearch.ItemSearchViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
@@ -19,4 +20,5 @@ val appModule =
 
         viewModel { CharacterListViewModel(get()) }
         viewModel { params -> CharacterDetailViewModel(params.get(), get()) }
+        viewModel { ItemSearchViewModel(get()) }
     }

@@ -8,6 +8,7 @@ import com.mrp.fe3hreference.data.model.Crest
 import com.mrp.fe3hreference.data.model.CrestId
 import com.mrp.fe3hreference.data.model.Item
 import com.mrp.fe3hreference.data.model.ItemId
+import com.mrp.fe3hreference.data.model.LostItem
 import com.mrp.fe3hreference.data.model.Tea
 import com.mrp.fe3hreference.data.model.TeaId
 import com.mrp.fe3hreference.data.model.TeaTopic
@@ -54,6 +55,10 @@ class FE3HRepositoryImpl(
 
     private val charactersById: Map<CharacterId, Character> by lazy { allCharacters.associateBy { it.id } }
 
+    private val allLostItems: List<LostItem> by lazy {
+        allCharacters.flatMap { character -> character.lostItems.map { LostItem(item = it, ownerId = character.id) } }
+    }
+
     override suspend fun getCharacters(): List<Character> = withContext(ioDispatcher) { allCharacters }
 
     override suspend fun getCharacter(id: CharacterId): Character? = withContext(ioDispatcher) { charactersById[id] }
@@ -63,4 +68,6 @@ class FE3HRepositoryImpl(
     override suspend fun getCrests(): List<Crest> = withContext(ioDispatcher) { allCrests }
 
     override suspend fun getTeas(): List<Tea> = withContext(ioDispatcher) { allTeas }
+
+    override suspend fun getLostItems(): List<LostItem> = withContext(ioDispatcher) { allLostItems }
 }

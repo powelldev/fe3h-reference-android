@@ -33,7 +33,12 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
             )
         }
         composable(Route.ItemSearch.route) {
-            ItemSearchScreen()
+            ItemSearchScreen(
+                onBackClick = { navController.navigateUp() },
+                onCharacterClick = { characterId ->
+                    navController.navigate(Route.CharacterDetail.createRoute(characterId))
+                },
+            )
         }
     }
 }

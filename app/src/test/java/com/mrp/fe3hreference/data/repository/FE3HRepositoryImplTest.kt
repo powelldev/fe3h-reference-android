@@ -125,4 +125,23 @@ class FE3HRepositoryImplTest {
                 assertEquals(11, character.proficiencies.size)
             }
         }
+
+    @Test
+    fun `getLostItems includes every character's lost items with the correct owner`() =
+        runTest {
+            val lostItems = repository.getLostItems()
+
+            val hubertsRazor = lostItems.single { it.item.id.value == "folding_razor" }
+            assertEquals(CharacterId("hubert"), hubertsRazor.ownerId)
+        }
+
+    @Test
+    fun `getLostItems returns one entry per character lost item`() =
+        runTest {
+            val characters = repository.getCharacters()
+            val lostItems = repository.getLostItems()
+
+            val expectedCount = characters.sumOf { it.lostItems.size }
+            assertEquals(expectedCount, lostItems.size)
+        }
 }
