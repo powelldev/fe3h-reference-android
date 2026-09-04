@@ -1,0 +1,53 @@
+appId: com.mrp.fe3hreference
+---
+# Verifies the Phase 7 deliverable: Item Search filters the bundled lost-item
+# data in real time as the user types (no submit button), is case
+# insensitive, shows the owning character's portrait/name alongside each
+# result, and tapping a result navigates straight to that character's detail
+# screen.
+- launchApp
+- assertVisible: "FE3H Reference"
+- tapOn: "⋮"
+- tapOn: "Item Search"
+- assertVisible: "Item Search"
+
+# Before typing, no results are shown yet.
+- assertVisible: "Type an item's name to find who lost it."
+- assertNotVisible:
+    id: "item_search_results"
+
+# Typing filters instantly, with no submit button, and is case insensitive.
+- tapOn:
+    id: "item_search_field"
+- inputText: "white glo"
+- assertVisible:
+    id: "item_search_result_white_glove"
+- assertVisible: "White Glove"
+- assertVisible: "Edelgard"
+
+- tapOn:
+    id: "item_search_field"
+- eraseText
+- inputText: "WHITE GLOVE"
+- assertVisible:
+    id: "item_search_result_white_glove"
+
+# Tapping a result navigates to the item's owner.
+- tapOn:
+    id: "item_search_result_white_glove"
+- assertVisible: "Edelgard"
+- assertVisible: "Stats"
+- back
+
+# A query with no matches shows an explicit empty state instead of stale results.
+- tapOn:
+    id: "item_search_field"
+- eraseText
+- inputText: "no_such_lost_item_exists"
+- assertVisible: "No items found."
+- assertNotVisible:
+    id: "item_search_results"
+
+# Clearing the query returns to the initial hint state.
+- eraseText
+- assertVisible: "Type an item's name to find who lost it."

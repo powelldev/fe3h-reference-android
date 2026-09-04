@@ -1,0 +1,59 @@
+appId: com.mrp.fe3hreference
+---
+# Verifies the Phase 8 deliverable: the Teas tab renders a character's
+# favorite teas, tea topics, and final questions (with their responses) from
+# live FE3H data, and the in-tab tea search filters topics/questions in real
+# time while preserving the category structure.
+- launchApp
+- assertVisible: "FE3H Reference"
+- tapOn: "Hubert"
+- tapOn: "Teas"
+
+# Unfiltered: favorite teas, tea topics, and final questions with responses.
+- assertVisible: "Favorite Teas"
+- assertVisible: "Cinnamon Blend"
+- assertVisible: "Tea Topics"
+- assertVisible: "A new gambit…"
+- scrollUntilVisible:
+    element:
+      text: "Final Questions"
+    direction: DOWN
+- scrollUntilVisible:
+    element:
+      text: ".*grateful for the opportunity to observe you.*"
+    direction: DOWN
+- assertVisible: "Sigh, Sip tea"
+
+# Searching filters tea topics and final questions (by comment or response),
+# but favorite teas are outside the search scope and are hidden while
+# actively searching.
+- scrollUntilVisible:
+    element:
+      id: "tea_search_field"
+    direction: UP
+- tapOn:
+    id: "tea_search_field"
+- inputText: "gossip"
+- assertVisible: "I heard some gossip…"
+- assertNotVisible: "Cinnamon Blend"
+- assertNotVisible: "A new gambit…"
+
+# A final question can also be found by its response text, not just its comment.
+- tapOn:
+    id: "tea_search_field"
+- eraseText
+- inputText: "sip tea"
+- assertVisible: ".*grateful for the opportunity to observe you.*"
+
+# A query matching nothing in either category surfaces an explicit empty state.
+- tapOn:
+    id: "tea_search_field"
+- eraseText
+- inputText: "no_such_tea_topic_or_question"
+- assertVisible:
+    id: "tea_search_empty"
+
+# Clearing the search restores the full, unfiltered view.
+- eraseText
+- assertVisible: "Favorite Teas"
+- assertVisible: "Cinnamon Blend"

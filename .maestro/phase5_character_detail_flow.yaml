@@ -21,11 +21,11 @@ appId: com.mrp.fe3hreference
 - assertVisible: "Growth Rates"
 - assertVisible: "Maximum Stats"
 
-# Items/Teas tabs are reachable (full content lands in later phases).
+# Items/Teas tabs are reachable (full content is covered by their own flows).
 - tapOn: "Items"
-- assertVisible: "Items — coming soon"
+- assertVisible: "Lost Items"
 - tapOn: "Teas"
-- assertVisible: "Teas — coming soon"
+- assertVisible: "Favorite Teas"
 - back
 
 # Edelgard: crest icons open a tooltip with the crest's name and effect.
@@ -34,7 +34,7 @@ appId: com.mrp.fe3hreference
 - tapOn:
     id: "crest_icon_flames"
 - assertVisible: "Flames"
-- assertVisible: "Occasionally restores HP"
+- assertVisible: ".*Occasionally restores HP.*"
 - tapOn: "OK"
 - tapOn:
     id: "crest_icon_seiros"

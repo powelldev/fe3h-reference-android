@@ -8,6 +8,7 @@ sealed interface CharacterDetailUiState {
     data class Success(
         val character: Character,
         val selectedTab: CharacterDetailTab = CharacterDetailTab.STATS,
+        val teaSearchQuery: String = "",
     ) : CharacterDetailUiState
 
     data class Error(

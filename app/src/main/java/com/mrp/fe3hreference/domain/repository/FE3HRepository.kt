@@ -4,6 +4,7 @@ import com.mrp.fe3hreference.data.model.Character
 import com.mrp.fe3hreference.data.model.CharacterId
 import com.mrp.fe3hreference.data.model.Crest
 import com.mrp.fe3hreference.data.model.Item
+import com.mrp.fe3hreference.data.model.LostItem
 import com.mrp.fe3hreference.data.model.Tea
 
 interface FE3HRepository {
@@ -16,4 +17,6 @@ interface FE3HRepository {
     suspend fun getCrests(): List<Crest>
 
     suspend fun getTeas(): List<Tea>
+
+    suspend fun getLostItems(): List<LostItem>
 }

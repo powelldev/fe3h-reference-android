@@ -44,4 +44,10 @@ class CharacterDetailViewModel(
             if (state is CharacterDetailUiState.Success) state.copy(selectedTab = tab) else state
         }
     }
+
+    fun onTeaSearchQueryChanged(query: String) {
+        _uiState.update { state ->
+            if (state is CharacterDetailUiState.Success) state.copy(teaSearchQuery = query) else state
+        }
+    }
 }

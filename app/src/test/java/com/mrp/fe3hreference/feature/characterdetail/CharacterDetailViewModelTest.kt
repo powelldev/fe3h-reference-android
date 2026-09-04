@@ -66,4 +66,37 @@ class CharacterDetailViewModelTest {
 
             assertTrue(state is CharacterDetailUiState.Error)
         }
+
+    @Test
+    fun `tea search query starts blank`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
+
+            val success = viewModel.uiState.value as CharacterDetailUiState.Success
+            assertEquals("", success.teaSearchQuery)
+        }
+
+    @Test
+    fun `onTeaSearchQueryChanged updates the tea search query`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
+
+            viewModel.onTeaSearchQueryChanged("gossip")
+
+            val success = viewModel.uiState.value as CharacterDetailUiState.Success
+            assertEquals("gossip", success.teaSearchQuery)
+        }
+
+    @Test
+    fun `switching tabs preserves the tea search query`() =
+        runTest {
+            val viewModel = CharacterDetailViewModel(CharacterId("hubert"), repository)
+
+            viewModel.onTeaSearchQueryChanged("gossip")
+            viewModel.onTabSelected(CharacterDetailTab.STATS)
+
+            val success = viewModel.uiState.value as CharacterDetailUiState.Success
+            assertEquals("gossip", success.teaSearchQuery)
+            assertEquals(CharacterDetailTab.STATS, success.selectedTab)
+        }
 }

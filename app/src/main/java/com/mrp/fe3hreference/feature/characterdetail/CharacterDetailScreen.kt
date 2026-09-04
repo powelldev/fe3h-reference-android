@@ -2,6 +2,7 @@ package com.mrp.fe3hreference.feature.characterdetail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
@@ -21,6 +22,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mrp.fe3hreference.data.model.CharacterId
 import com.mrp.fe3hreference.feature.characterdetail.components.ItemsTab
 import com.mrp.fe3hreference.feature.characterdetail.components.StatsTab
+import com.mrp.fe3hreference.feature.characterdetail.components.TeasTab
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -50,51 +52,56 @@ fun CharacterDetailScreen(
         },
     ) { padding ->
         when (val currentState = state) {
-            is CharacterDetailUiState.Loading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    CircularProgressIndicator()
-                }
-            }
+            is CharacterDetailUiState.Loading -> CenteredBox(padding) { CircularProgressIndicator() }
 
-            is CharacterDetailUiState.Success -> {
-                Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-                    TabRow(selectedTabIndex = currentState.selectedTab.ordinal) {
-                        CharacterDetailTab.entries.forEach { tab ->
-                            Tab(
-                                selected = tab == currentState.selectedTab,
-                                onClick = { viewModel.onTabSelected(tab) },
-                                text = { Text(tab.label) },
-                                modifier = Modifier.testTag("character_detail_tab_${tab.name}"),
-                            )
-                        }
-                    }
+            is CharacterDetailUiState.Success ->
+                CharacterDetailContent(state = currentState, padding = padding, viewModel = viewModel)
 
-                    when (currentState.selectedTab) {
-                        CharacterDetailTab.STATS -> StatsTab(character = currentState.character)
-                        CharacterDetailTab.ITEMS -> ItemsTab(character = currentState.character)
-                        CharacterDetailTab.TEAS -> PlaceholderTabContent(text = "Teas — coming soon")
-                    }
-                }
-            }
-
-            is CharacterDetailUiState.Error -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(text = currentState.message)
-                }
-            }
+            is CharacterDetailUiState.Error -> CenteredBox(padding) { Text(text = currentState.message) }
         }
     }
 }
 
 @Composable
-private fun PlaceholderTabContent(text: String) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = text)
+private fun CharacterDetailContent(
+    state: CharacterDetailUiState.Success,
+    padding: PaddingValues,
+    viewModel: CharacterDetailViewModel,
+) {
+    Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+        TabRow(selectedTabIndex = state.selectedTab.ordinal) {
+            CharacterDetailTab.entries.forEach { tab ->
+                Tab(
+                    selected = tab == state.selectedTab,
+                    onClick = { viewModel.onTabSelected(tab) },
+                    text = { Text(tab.label) },
+                    modifier = Modifier.testTag("character_detail_tab_${tab.name}"),
+                )
+            }
+        }
+
+        when (state.selectedTab) {
+            CharacterDetailTab.STATS -> StatsTab(character = state.character)
+            CharacterDetailTab.ITEMS -> ItemsTab(character = state.character)
+            CharacterDetailTab.TEAS ->
+                TeasTab(
+                    character = state.character,
+                    searchQuery = state.teaSearchQuery,
+                    onSearchQueryChanged = viewModel::onTeaSearchQueryChanged,
+                )
+        }
+    }
+}
+
+@Composable
+private fun CenteredBox(
+    padding: PaddingValues,
+    content: @Composable () -> Unit,
+) {
+    Box(
+        modifier = Modifier.fillMaxSize().padding(padding),
+        contentAlignment = Alignment.Center,
+    ) {
+        content()
     }
 }
