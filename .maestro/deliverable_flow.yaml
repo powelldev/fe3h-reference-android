@@ -1,13 +1,16 @@
 appId: com.mrp.fe3hreference
 ---
-# Verifies the Phase 1 deliverable:
-# App launches -> Character List placeholder -> Character Detail placeholder -> Item Search placeholder
+# Verifies the Phase 4 deliverable:
+# App launches -> character grid populated from FE3H data -> tapping a
+# character navigates to Character Detail with the correct id -> Item
+# Search remains reachable from the top bar menu.
 - launchApp
-- assertVisible: "Character List"
-- tapOn: "View Character Detail"
-- assertVisible: "Character Detail"
+- assertVisible: "FE3H Reference"
+- assertVisible: "Hubert"
+- tapOn: "Hubert"
+- assertVisible: "ID: hubert"
 - back
-- assertVisible: "Character List"
+- assertVisible: "Hubert"
 - tapOn: "⋮"
 - tapOn: "Item Search"
 - assertVisible: "Item Search"
